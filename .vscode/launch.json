@@ -2,6 +2,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+        
 
         {
             "name": "Sandbox Project",
@@ -11,6 +12,18 @@
             "program": "${workspaceFolder}/sandbox/Sandbox/bin/Debug/net10.0/Sandbox.dll",
             "args": [],
             "cwd": "${workspaceFolder}/sandbox/Sandbox",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
+        {
+            "name": "Week 01: Practice",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "${workspaceFolder}/week01/Practice/practice.cs",
+            "args": [],
+            "cwd": "${workspaceFolder}/week01/Practice",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
