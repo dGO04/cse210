@@ -1,9 +1,44 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Exercise4 Project.");
+        //Initialize a new List to store numbers given by the user
+        List<int> numbers = new List<int>();
+
+        //Display instructions to the user
+        Console.WriteLine("Enter a list of numbers, type 0 when finished");
+
+        int number;
+        //Request the user for numbers until they stop
+        do
+        {
+            Console.Write("Enter a number: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number != 0)
+            {
+                //add a number into the numbers list
+                numbers.Add(number);
+            }
+
+        } while (number != 0);
+
+        int sum = 0;
+        //sum all items in the list and display total
+        foreach (int num in numbers)
+        {
+            sum = sum + num;
+        }
+        Console.WriteLine(sum);
+
+        //calculate average and display it 
+        int numbersAmount = numbers.Count;
+
+        Console.WriteLine(numbersAmount);
+        
     }
 }
