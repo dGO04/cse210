@@ -12,6 +12,7 @@ public class Job
         
     }
 
+    //Return a detailed description of the job
     public string Display()
     {
         return $"{_jobTitle} ({_company}) {_startYear}-{_endYear}";
