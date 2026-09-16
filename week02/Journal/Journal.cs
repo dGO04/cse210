@@ -29,7 +29,6 @@ public class Journal
         Return: the random prompt generated*/
 
         int promptsLenght = _prompts.Count();
-        
         int random = Random.Shared.Next(0, promptsLenght);
         string prompt = _prompts[random];
 
@@ -99,7 +98,6 @@ public class Journal
                     entry._entryText = parts[2];
 
                     _entries.Add(entry);
-
                 }
             } else
             {
@@ -123,8 +121,8 @@ public class Journal
             //Get the filename from the user
             Console.Write("Enter filename using cammelcase to save entries. example(myFileName):");
             //Combine user filename with .txt at the end
-            string filename = $"{Console.ReadLine()}.txt";
-            using (StreamWriter outputFile = new StreamWriter(filename))
+            string fileName = $"{Console.ReadLine()}.txt";
+            using (StreamWriter outputFile = new StreamWriter(fileName))
             {   
 
                 foreach (Entry entry in _entries)

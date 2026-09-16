@@ -3,7 +3,11 @@ using System.IO;
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel;
 
+//Exceeding Requirements: I wrote code in each user 
+//input to catch any errors raised preventing the 
+//program from crashing
 class Program
 {
     static void Main(string[] args)
@@ -30,16 +34,23 @@ class Program
         do
         {
             
-            DisplayMenu(options:options);
-            option = int.Parse(Console.ReadLine());
-
-            //check if user option is within the range 
-            //of the available menu options
-            if (option >= 1 && option <= options.Count() - 1)
+            try
             {
-                ExecuteOptions(option:option, journal:journal);
+                DisplayMenu(options:options);
+                option = int.Parse(Console.ReadLine());
 
-            } else if (option < 1 || option > options.Count()) 
+                //check if user option is within the range 
+                //of the available menu options
+                if (option >= 1 && option <= options.Count() - 1)
+                {
+                    ExecuteOptions(option:option, journal:journal);
+
+                } else if (option < 1 || option > options.Count()) 
+                {
+                    Console.WriteLine("Select a valid option");
+
+                }
+            } catch (FormatException)
             {
                 Console.WriteLine("Select a valid option");
             }
@@ -63,10 +74,8 @@ class Program
         foreach (string option in options)
         {
             Console.WriteLine($"{index}. {option}");
-
             index += 1;
         }
-
          Console.Write("Select an option:");
 
     }
@@ -98,8 +107,6 @@ class Program
 
             journal.SaveToFile();
         } 
-
-
     }
 
 }
