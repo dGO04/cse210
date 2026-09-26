@@ -1,9 +1,15 @@
-using System;
+    using System;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.Clear();
+        Console.WriteLine("Videos: ");
+        Console.WriteLine();
+        Youtube youtube = new Youtube();
+        youtube.AddVideos();
+        youtube.DisplayAllVideos();
     }
 }
