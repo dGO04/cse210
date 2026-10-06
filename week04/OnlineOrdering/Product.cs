@@ -26,7 +26,7 @@ public class Product
         return $"{_name}[{_id}]";
     }
 
-    public string GetProductID()
+    public void GetProductID()
     {
         string idLetter = _name[0].ToString();
         string idLastLetter = _name[_name.Count() - 1].ToString();
@@ -43,6 +43,5 @@ public class Product
 
         _id = $"{idLetter.ToUpper()}{idLastLetter.ToUpper()}{randomNumbers}";
 
-        return _id;
     }
 }
