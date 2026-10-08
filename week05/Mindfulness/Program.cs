@@ -1,21 +1,78 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
     static void Main(string[] args)
     {
-        string[] characters = ["/", "|", @"\", "—"];
-        for(int i = 0; i < 7; i++)
+        //Quit always has to be the last option in the array
+        string[] menuOptions = ["Breathing activity", "Reflecting activity", "Listing activity", "Quit"];
+
+        int selectedOption = 0;
+        while (selectedOption != 4)
         {
-            foreach (string character in characters) 
+            bool validResponse = false;
+            do
             {
-                Console.WriteLine($"Loading: {character}");
-                Thread.Sleep(100);
-                Console.Clear();
-            }
-            
+                try
+                {
+
+                    Console.Clear();
+                    Console.WriteLine("Welcome to The Mindfullness Program\n");
+
+                    //Display all menu options in the array of options
+                    for(int i = 1; i <= menuOptions.Length; i++)
+                    {
+                        Console.WriteLine($"{i}. {menuOptions[i - 1]}");
+                    }
+
+                    Console.Write("\nSelect an option: ");
+                    selectedOption = int.Parse(Console.ReadLine());
+                    validResponse = true;
+
+                    if (selectedOption < 1 || selectedOption > menuOptions.Length)
+                    {
+                        validResponse = false;
+
+                    }
+
+                } catch(FormatException)
+                {
+                    validResponse = false;
+                }
+
+                if (validResponse == false)
+                {
+                    Console.WriteLine("Invalid option. Try Again!!");
+                }
+            }while(validResponse == false);
+
+            ExecuteMenuOption(option:selectedOption, menuOptions:menuOptions.Length);
         }
     }
+
+    static void ExecuteMenuOption(int option, int menuOptions)
+    {
+        if (option < menuOptions)
+        {
+            if (option == 1)
+            {
+                string bDescription = "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.";
+                BreathingActivity breathAct = new BreathingActivity(activityDescription:bDescription);
+                breathAct.DisplayStartingMessage();
+                breathAct.Breathing();
+            } else if (option == 2)
+            {
+                string rDescription = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+                ReflectionActivity reflectAct = new ReflectionActivity(activityDescription:rDescription);
+                reflectAct.DisplayStartingMessage();
+            } else if (option == 3)
+            {
+                string lDescription = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+                ListingActivity listAct = new ListingActivity(activityDescription:lDescription);
+                listAct.DisplayStartingMessage();
+            }
+        }
+    }
+
 }
-
-
