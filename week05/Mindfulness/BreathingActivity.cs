@@ -19,6 +19,7 @@ public class BreathingActivity : Activity
             Console.WriteLine("Breath out...");
             Thread.Sleep((breathingDuration / 2) * 1000);
         }
+        Console.WriteLine("\n\n"); //New line for good formating
     }
 
     public void BreathingAnimation(string prompt)
