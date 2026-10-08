@@ -10,27 +10,17 @@ public class BreathingActivity : Activity
     {
         int breathingDuration = _activityDuration / 3;
 
-        BreathingAnimation("Breath in");
+        BreathingCycle(durationSeconds:6000);
 
         for(int i = 1; i < 4; i++)
         {
-            Console.WriteLine("\nBreath in...");
-            Thread.Sleep((breathingDuration / 2) * 1000);
-            Console.WriteLine("Breath out...");
-            Thread.Sleep((breathingDuration / 2) * 1000);
+            BreathingCycle(durationSeconds:breathingDuration*1000);
         }
-        Console.WriteLine("\n\n"); //New line for good formating
     }
 
-    public void BreathingAnimation(string prompt)
+    private void BreathingCycle(int durationSeconds)
     {
-        Console.Write($"{prompt}...");
-
-        for(int i = 4; i >= 1; i--)
-        {
-            Console.Write(i);
-            Thread.Sleep(1000);
-            Console.Write("\b \b");
-        }
+        CountdownAnimation(prompt:"\nBreath in", durationSeconds:durationSeconds/2);
+        CountdownAnimation(prompt:"Now breath out", durationSeconds:durationSeconds/2);
     }
 }
