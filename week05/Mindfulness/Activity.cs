@@ -1,7 +1,7 @@
 public class Activity
 {
-    protected string _acitivityName;
-    protected string _activityDescription;
+    private string _acitivityName;
+    private string _activityDescription;
     protected int _activityDuration;
 
     public Activity()
